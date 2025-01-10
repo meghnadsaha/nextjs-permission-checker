@@ -1,10 +1,14 @@
 
+# React and Bootstrap Custom Components
 
-```md
-| Modules                                                         | Description                                                    |
-| ------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [react-form-validations-with-bootstrap.md](react-form-validations-with-bootstrap.md) | Overview of integrating form validations in React with Bootstrap |
-| [SearchableDropdown.md](SearchableDropdown.md)                     | Implementation and usage of a searchable dropdown component    |
-| [TokenizedTagInput.md](TokenizedTagInput.md)                       | Guide to creating a tokenized tag input in React               |
-| [permissions-based rendering.md](permissions-based%20rendering.md) | How to implement permissions-based rendering in your application |
-```
+1. [React Form Validations with Bootstrap](react-form-validations-with-bootstrap.md)  
+   Explore how to incorporate form validations in React using Bootstrap for styling.
+
+2. [Searchable Dropdown](SearchableDropdown.md)  
+   Learn how to implement a dropdown component with search functionality in React.
+
+3. [Tokenized Tag Input](TokenizedTagInput.md)  
+   Understand how to create and manage tokenized tags in a React form field.
+
+4. [Permissions Based Rendering](permissions-based%20rendering.md)  
+   Discover how to show or hide UI elements in React based on user permissions.
