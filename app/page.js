@@ -80,7 +80,7 @@ const HomePage = () => {
         ])}
 
         {renderCard('Select ', [
-          { text: 'Searchable Drop Down', href: '/ui-components/SearchableDropdown' },
+          { text: 'Searchable Drop Down', href: '/ui-components/searchable-dropdown' },
           { text: 'Tokenized Tag Input', href: '/ui-components/TokenizedTagInput' },    
           { text: 'Real-Time Client-Side Validation v2', href: '/ui-components/real-time-client-side-validation-v2' },                
           { text: 'Transfer Data to and from a  Modal', href: '/ui-components/bootstrap-modal-data-transfer' },          

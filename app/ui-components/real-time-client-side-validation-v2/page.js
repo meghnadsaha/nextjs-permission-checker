@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import SearchableDropdown from "../searchable-dropdown/page";
 // import "./create-job.css";
 
-export default function JobOpening() {
+export default function CreateJobOpening() {
   // 1) INITIAL STATES
   const initialState = {
     postingTitle: "",
@@ -32,6 +33,14 @@ export default function JobOpening() {
     jobSummary: null,
     otherAttachments: null,
   };
+
+  const industryOptions = [];
+  industryOptions.push(...[
+    "None", "Administration", "Advertising", "Agriculture", "Architecture & Construction", "Arts & Graphics", "Airline - Aviation", "Accounting", "Automotive", "Banking", "Biotechnology", "Broadcasting", "Business Management", "Charity", "Catering", "Customer Service", "Chemicals", "Construction", "Communications", "Consulting", "Computer", "Consumer", "Cosmetics", "Design", "Defence", "Education", "Electronics", "Engineering", "Energy and Utilities", "Entertainment", "Employment - Recruiting - Staffing", "Environmental", "Exercise - Fitness", "Export/Import", "Financial Services", "Fashion", "FMCG/Foods/Beverage", "Fertilizers/Pesticides", "Furniture", "Grocery", "Gas", "Government", "Government/Military", "Government & Public Sector", "Gems & Jewellery", "Health Care", "Human Resources", "Hospitality", "Hotels and Lodging", "HVAC", "Hardware", "Insurance", "Installation", "IT Services", "Industrial", "Internet Services", "Import - Export", "Legal", "Logistics", "Landscaping", "Leisure and Sport", "Library Science", "Marketing", "Manufacturing", "Management", "Merchandising", "Medical", "Media", "Metals", "Mining", "Military", "Mortgage", "Marine", "Maritime", "Nonprofit Charitable Organizations", "NGO/Social Services", "Newspaper", "Oil & Gas", "Other", "Other/Not Classified", "Pharma", "Polymer / Plastic / Rubber", "Pharma/Biotech/Clinical Research", "Public Sector and Government", "Printing/Packaging/Publishing", "Personal and Household Services", "Property & Real Estate", "Paper", "Pet Store", "Public Relations", "Real Estate", "Retail", "Retail & Wholesale", "Recreation", "Real Estate and Property", "Recruitment/Employment Firm", "Real Estate/Property Management", "Restaurant/Food Services", "Rental Services", "Research & Development", "Repair / Maintenance Services", "Services", "Sales - Marketing", "Science & Technology", "Security/Law Enforcement", "Shipping/Marine", "Security and Surveillance", "Sports and Physical Recreation", "Staffing/Employment Agencies", "Social Services", "Sports Leisure & Lifestyle", "Semiconductor", "Technology", "Services - Corporate B2B", "Travel", "Training", "Transportation", "Telecommunications", "Trade and Services", "Travel and Tourism", "Textiles/Garments/Accessories", "Tyres", "Utilities", "Wireless", "Wood / Fibre / Paper", "Waste Management", "Wholesale Trade/Import-Export"
+  ]);
+
+  const titles = ['Developer', 'Product Manager', 'Product Lead', 'Technical Manager', 'Web Designer'];
+
 
   // State to hold form data
   const [formData, setFormData] = useState(initialState);
@@ -173,7 +182,6 @@ export default function JobOpening() {
       [fieldName]: error,
     }));
   };
-
   // 4) HANDLE INPUT CHANGES
   const handleInputChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -190,17 +198,31 @@ export default function JobOpening() {
       newValue = value;
     }
 
+    // Log the previous form data and touched fields before updating
+    console.log('Previous form data:', formData);
+    console.log('Previous touched fields:', touchedFields);
+
     // Update form data
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: newValue,
-    }));
+    setFormData((prevData) => {
+      const updatedFormData = {
+        ...prevData,
+        [name]: newValue,
+      };
+      // Log the updated form data
+      console.log('Updated form data:', updatedFormData);
+      return updatedFormData;
+    });
 
     // Mark field as touched
-    setTouchedFields((prev) => ({
-      ...prev,
-      [name]: true,
-    }));
+    setTouchedFields((prev) => {
+      const updatedTouchedFields = {
+        ...prev,
+        [name]: true,
+      };
+      // Log the updated touched fields
+      console.log('Updated touched fields:', updatedTouchedFields);
+      return updatedTouchedFields;
+    });
 
     // Validate the field immediately
     validateField(name, newValue, type);
@@ -247,6 +269,8 @@ export default function JobOpening() {
       setIsSubmitted(false);
       alert("Please fix the errors in the form before submitting.");
     }
+
+
   };
 
   return (
@@ -320,7 +344,7 @@ export default function JobOpening() {
                     </label>
                   </td>
                   <td>
-                    <select
+                    {/* <select
                       className={`form-select form-select-sm small-placeholder ${getValidationClass("title")}`}
                       id="title"
                       name="title"
@@ -330,7 +354,20 @@ export default function JobOpening() {
                       <option value="">Choose...</option>
                       <option>Recruiter 1</option>
                       <option>Recruiter 2</option>
-                    </select>
+                    </select> */}
+                    <SearchableDropdown
+                      id="title"
+                      name="title"
+                      options={titles}
+                      selectedValue={formData.title}
+                      placeholder="Choose a title"
+                      onSelect={(selectedOption) => setFormData((prev) => ({ ...prev, title: selectedOption }))}
+                      value={formData.title}
+                      onChange={handleInputChange}
+                      className={`form-select form-select-sm small-placeholder ${getValidationClass("title")}`}
+                      getValidationClass={getValidationClass}
+                    />
+
                     <div className={getFeedbackClass("title")}>
                       {getFeedbackMessage("title")}
                     </div>
@@ -555,6 +592,29 @@ export default function JobOpening() {
                     />
                     <div className={getFeedbackClass("remoteJob")}>
                       {getFeedbackMessage("remoteJob")}
+                    </div>
+                  </td>
+                  <td>
+                    <label htmlFor="industry" className="form-label fs-0-point-7 mb-0 me-2">
+                      Industry
+                    </label>
+                  </td>
+                  <td>
+
+                    <SearchableDropdown
+                      id="industry"
+                      name="industry"
+                      options={industryOptions}
+                      selectedValue={formData.industry}
+                      placeholder="Choose a recruiter"
+                      onSelect={(selectedOption) => setFormData((prev) => ({ ...prev, industry: selectedOption }))}
+                      value={formData.industry}
+                      onChange={handleInputChange}
+                      className={`form-select form-select-sm small-placeholder ${getValidationClass("industry")}`}
+                      getValidationClass={getValidationClass}
+                    />
+                    <div className={getFeedbackClass("industry")}>
+                      {getFeedbackMessage("industry")}
                     </div>
                   </td>
                 </tr>
