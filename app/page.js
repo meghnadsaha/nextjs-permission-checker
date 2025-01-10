@@ -82,7 +82,10 @@ const HomePage = () => {
         {renderCard('Select ', [
           { text: 'Searchable Drop Down', href: '/ui-components/SearchableDropdown' },
           { text: 'Tokenized Tag Input', href: '/ui-components/TokenizedTagInput' },          
-          { text: 'Security Control', href: '#securityControl' },
+          { text: 'Real-Time Client-Side Validation', href: '/ui-components/real-time-client-side-validation' },          
+
+          
+          // real-time-client-side-validation
         ])}
 
         {renderCard('Customization', [
