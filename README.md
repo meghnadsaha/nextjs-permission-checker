@@ -13,3 +13,6 @@ Ready to supercharge your front-end development? Explore these hands-on guides t
 
 4. [Permissions Based Rendering](https://github.com/meghnadsaha/nextjs-permission-checker/blob/main/app/doc/permissions-based%20rendering.md)  
    Secure your interface by displaying elements only when users have the appropriate permissions.
+
+5. [How to Transfer Data to and from a React Bootstrap 5.3 Modal](https://github.com/meghnadsaha/nextjs-permission-checker/blob/main/app/ui-components/bootstrap-modal-data-transfer/how-to-transfer-data-react-bootstrap-5-3-modal.md)  
+   Smoothly handle passing information into your modals for display or editing, and retrieving it back for further processing.
