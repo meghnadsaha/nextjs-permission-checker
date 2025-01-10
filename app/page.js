@@ -84,7 +84,8 @@ const HomePage = () => {
           { text: 'Tokenized Tag Input', href: '/ui-components/TokenizedTagInput' },          
           { text: 'Real-Time Client-Side Validation', href: '/ui-components/real-time-client-side-validation' },          
 
-          
+          { text: 'Real-Time Client-Side Validation v2', href: '/ui-components/real-time-client-side-validation-v2' },          
+
           // real-time-client-side-validation
         ])}
 

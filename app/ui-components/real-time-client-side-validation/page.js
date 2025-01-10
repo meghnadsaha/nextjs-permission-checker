@@ -96,7 +96,7 @@ export default function JobOpening() {
         break;
       case "jobSummary":
       case "otherAttachments":
-        if (!files || files.length === 0) {
+        if (!value || value.length === 0) {
           error = `Please upload a valid file for ${fieldName}.`;
         }
         break;
@@ -184,6 +184,7 @@ export default function JobOpening() {
                     value={formData.postingTitle}
                     onChange={handleInputChange} />
                     <div className="invalid-feedback">{formErrors.postingTitle}</div>
+
                   </td>
                   <td><label htmlFor="departmentName" className="form-label fs-0-point-7 mb-0 me-2">Department Name</label></td>
                   <td><input type="text" className={`form-control form-control-sm small-placeholder ${formErrors.departmentName ? 'is-invalid' : ''}`} id="departmentName" placeholder="Enter department name"
