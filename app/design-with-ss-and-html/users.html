@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruit User Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #ffffff;
+      border-right: 1px solid #ddd;
+      padding-top: 1rem;
+    }
+    .sidebar a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #495057;
+    }
+    .sidebar a.active {
+      color: #007bff;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+    .profile-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .user-list {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #ffffff;
+      padding: 15px;
+    }
+    .user-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .user-item:last-child {
+      border-bottom: none;
+    }
+    .profile-details, .locale-info, .reporting-hierarchy, .signature-section {
+      margin-top: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Recruit</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Job Openings</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Candidates</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Interviews</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-3 sidebar">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">Users</a>
+          <a href="#" class="list-group-item list-group-item-action">Security Control</a>
+          <a href="#" class="list-group-item list-group-item-action">Customization</a>
+          <a href="#" class="list-group-item list-group-item-action">Resume Management</a>
+          <a href="#" class="list-group-item list-group-item-action">Portal Setup</a>
+          <a href="#" class="list-group-item list-group-item-action">Career Website</a>
+          <a href="#" class="list-group-item list-group-item-action">Automation</a>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-9">
+        <div class="row">
+          <!-- User List -->
+          <div class="col-6">
+            <div class="user-list">
+              <h5>Active Users (2)</h5>
+              <div class="user-item">
+                <div>
+                  <span>saha@bishnupadasaha.agency</span>
+                  <p class="small text-muted mb-0">Recruiter Admin, Administrator</p>
+                </div>
+                <button class="btn btn-sm btn-danger">Deactivate</button>
+              </div>
+              <div class="user-item">
+                <div>
+                  <span>rohit sunil</span>
+                  <p class="small text-muted mb-0">Recruiter, Administrator</p>
+                </div>
+                <button class="btn btn-sm btn-secondary">Activate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Details -->
+          <div class="col-6">
+            <div class="profile-details">
+              <div class="profile-section">
+                <div>
+                  <h5>saha@bishnupadasaha.agency</h5>
+                  <p class="small text-muted">Recruiter Admin at</p>
+                  <p>meghnadsaha222@gmail.com</p>
+                </div>
+                <img src="https://via.placeholder.com/50" alt="User Image" class="rounded-circle">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Locale Information -->
+        <div class="locale-info mt-3">
+          <h6>Locale Information</h6>
+          <p><strong>Language:</strong> English (United Kingdom)</p>
+          <p><strong>Country Locale:</strong> United States</p>
+          <p><strong>Date Format:</strong> MM/DD/YYYY</p>
+          <p><strong>Time Format:</strong> 12 Hours</p>
+          <p><strong>Time Zone:</strong> India Standard Time</p>
+        </div>
+
+        <!-- Reporting Hierarchy -->
+        <div class="reporting-hierarchy mt-3">
+          <h6>Reporting Hierarchy</h6>
+          <p><strong>Reporting Manager:</strong> saha@bishnupadasaha.agency</p>
+          <p><strong>Subordinates:</strong> rohit sunil</p>
+        </div>
+
+        <!-- Signature Section -->
+        <div class="signature-section mt-3">
+          <h6>Signature</h6>
+          <p>No Signature</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

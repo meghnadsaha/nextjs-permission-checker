@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Layout – Bootstrap 5.3.3</title>
+  <!-- Bootstrap CSS (v5.3.3) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  />
+  <style>
+    /* Example pipeline stage badges */
+    .stage-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      background-color: #e9ecef;
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container-fluid py-3">
+  <!-- Row 1: Hiring Pipeline -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">Hiring Pipeline</h6>
+          <div>
+            <!-- Example filters on the right side: All Users, All Departments -->
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>All Users</option>
+              <option>User A</option>
+              <option>User B</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>All Departments</option>
+              <option>Department A</option>
+              <option>Department B</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Pipeline stages across the top -->
+          <div class="d-flex mb-3 flex-wrap">
+            <div class="stage-badge">Screening</div>
+            <div class="stage-badge">Submissions</div>
+            <div class="stage-badge">Interview</div>
+            <div class="stage-badge">Offered</div>
+            <div class="stage-badge">Hired</div>
+            <div class="stage-badge">Rejected</div>
+            <div class="stage-badge">Archived</div>
+          </div>
+          <!-- Example pipeline items -->
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Posting Title / Department Name</th>
+                  <th>Screening</th>
+                  <th>Submissions</th>
+                  <th>Interview</th>
+                  <th>Offered</th>
+                  <th>Hired</th>
+                  <th>Rejected</th>
+                  <th>Archived</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="#!">Sales Manager (Sample)</a><br/>
+                    <small class="text-muted">Scott Fisher (Sample)</small>
+                  </td>
+                  <td><span class="text-danger">✘</span></td>
+                  <td><span class="text-muted">0</span></td>
+                  <td><span class="badge bg-warning text-dark">1</span></td>
+                  <td><span class="text-muted">0</span></td>
+                  <td><span class="text-muted">0</span></td>
+                  <td><span class="text-muted">–</span></td>
+                  <td><span class="text-muted">–</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="#!">Product Analyst (Sample)</a><br/>
+                    <small class="text-muted">Quinn Rivers (Sample)</small>
+                  </td>
+                  <td><span class="text-muted">–</span></td>
+                  <td><span class="text-muted">0</span></td>
+                  <td><span class="text-muted">0</span></td>
+                  <td><span class="badge bg-success">1</span></td>
+                  <td><span class="text-muted">0</span></td>
+                  <td><span class="text-muted">–</span></td>
+                  <td><span class="text-muted">–</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Three cards in a row -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+    <!-- Time-to-fill -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">Time-to-fill</h6>
+          <div>
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>All Users</option>
+              <option>User A</option>
+              <option>User B</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>Any time</option>
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Example table for Time-to-fill -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Job Opening</th>
+                  <th>Candidates per position</th>
+                  <th>Time-to-fill (Days)</th>
+                  <th>Delay (Days)</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>All Jobs (e.g. 1)</td>
+                  <td>15</td>
+                  <td>3</td>
+                  <td>0</td>
+                  <td>On-track</td>
+                </tr>
+                <tr>
+                  <td>Product Analyst (Sample)</td>
+                  <td>1</td>
+                  <td>15</td>
+                  <td>0</td>
+                  <td>On-track</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Time-to-hire -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">Time-to-hire</h6>
+          <div>
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>All Users</option>
+              <option>User A</option>
+              <option>User B</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>Any time</option>
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Example table for Time-to-hire -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Candidate</th>
+                  <th>Job Opening</th>
+                  <th>Time-to-hire (Days)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Christine Madsen (Sample)</td>
+                  <td>Product Analyst (Sample)</td>
+                  <td>15</td>
+                </tr>
+                <!-- Additional rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Age of Job -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">Age of Job</h6>
+          <div>
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>All Users</option>
+              <option>User A</option>
+              <option>User B</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>Any time</option>
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Example table for Age of Job -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Job Opening</th>
+                  <th>No. of Positions</th>
+                  <th>Age (Since Creation)</th>
+                  <th>Delay (Days)</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sales Manager (Sample)</td>
+                  <td>2</td>
+                  <td>15</td>
+                  <td>0</td>
+                  <td>On-track</td>
+                </tr>
+                <tr>
+                  <td>Senior Accountant (Sample)</td>
+                  <td>6</td>
+                  <td>16</td>
+                  <td>0</td>
+                  <td>On-radar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Next three cards -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+    <!-- Offer Acceptance Rate -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">Offer Acceptance Rate</h6>
+          <div>
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>All Users</option>
+              <option>User A</option>
+              <option>User B</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>Any time</option>
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Placeholder for data -->
+          <p class="text-muted">No records found</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Unattended Calls -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h6 class="mb-0 fw-bold">My Unattended Calls</h6>
+        </div>
+        <div class="card-body">
+          <!-- Example table for calls -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Subject</th>
+                  <th>Related To</th>
+                  <th>Call Start Time</th>
+                  <th>Activity Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a href="#!">Call Client on Job Opening</a>
+                  </td>
+                  <td>Product Analyst (Sample)</td>
+                  <td>Dec 1, 2021 10:05 AM</td>
+                  <td>Call</td>
+                </tr>
+                <tr>
+                  <td>Conversation on Call</td>
+                  <td>Product Analyst (Sample)</td>
+                  <td>Nov 7, 2019 12:06 AM</td>
+                  <td>Call</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming Interviews -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h6 class="mb-0 fw-bold">Upcoming Interviews</h6>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">No interviews found</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4: Last three cards -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    <!-- Completed Interviews -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h6 class="mb-0 fw-bold">Completed Interviews</h6>
+        </div>
+        <div class="card-body">
+          <!-- Example table for completed interviews -->
+          <div class="table-responsive">
+            <table class="table table-sm align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Interview Name</th>
+                  <th>Date / Time</th>
+                  <th>Interview Status</th>
+                  <th>Candidate Name</th>
+                  <th>Department Name</th>
+                  <th>Posting Title</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Internal Interview</td>
+                  <td>Dec 24, 2024 (3:30 PM - 6:00 PM)</td>
+                  <td>On-Hold</td>
+                  <td>Aaron Brown (Sample)</td>
+                  <td>Scott Fisher (Sample)</td>
+                  <td>Sales Manager (Sample)</td>
+                </tr>
+                <tr>
+                  <td>General Interview</td>
+                  <td>Dec 24, 2024 (3:30 PM - 6:00 PM)</td>
+                  <td>Strong Hire</td>
+                  <td>Christine Madsen (Sample)</td>
+                  <td>Quinn Rivers (Sample)</td>
+                  <td>Product Analyst (Sample)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Actions -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">My Actions</h6>
+          <div>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>Any time</option>
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Example “To-dos” and “Interviews” tabs or badges could go here -->
+          <p class="fw-semibold mb-1">Interview scheduled for Senior Accountant (Sample) on 19 Dec, 2024</p>
+          <!-- More items as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- All Activities -->
+    <div class="col">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h6 class="mb-0 fw-bold">All Activities</h6>
+          <div>
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>All Users</option>
+              <option>User A</option>
+              <option>User B</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto me-2">
+              <option>Any time</option>
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+            </select>
+            <select class="form-select form-select-sm d-inline-block w-auto">
+              <option>All Activities</option>
+              <option>Job Openings</option>
+              <option>Candidates</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li>
+              <small class="text-muted">Yesterday • 09:32 AM</small><br />
+              saha@bishnupadasaha.agency has published the job opening <strong>Product Analyst (Sample)</strong> on job boards
+            </li>
+            <hr />
+            <li>
+              <small class="text-muted">09:30 AM</small><br />
+              saha@bishnupadasaha.agency added candidates <strong>Martha Hills (Sample)</strong>
+            </li>
+            <hr />
+            <li>
+              <small class="text-muted">09:20 AM</small><br />
+              saha@bishnupadasaha.agency added candidates <strong>Aaron Brown (Sample)</strong>
+            </li>
+            <!-- More items as needed -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS Bundle (v5.3.3) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+</body>
+</html>

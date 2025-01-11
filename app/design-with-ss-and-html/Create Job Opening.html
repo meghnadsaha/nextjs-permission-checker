@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+    .table th, .table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    .table thead th {
+      font-weight: bold;
+    }
+    .section-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+    .important-notes {
+      font-size: 14px;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Profile Header -->
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Profile Details</h2>
+      <div>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-secondary">Clone</button>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <div><strong>Profile Name:</strong> Administrator</div>
+      <div><strong>Profile Description:</strong> This profile will have all the permissions</div>
+      <div><strong>Created By:</strong> Admin</div>
+      <div><strong>Modified By:</strong> Admin</div>
+
+      <div class="important-notes mt-3">
+        <strong>Important Notes:</strong> Organizational features (Users & Permissions, Company Settings, Job Board Hub, Data Administration, and Social Settings) are available only to the Administrator.
+      </div>
+    </div>
+
+    <!-- Module-level Permissions Table -->
+    <h4 class="section-title">Module-level Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Entity</th>
+          <th>Tab Visible</th>
+          <th>View</th>
+          <th>Create</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Home</td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Job Openings</td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Applications</td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Candidates</td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td><td><input type="checkbox" checked disabled></td></tr>
+        <!-- Add other rows similarly -->
+      </tbody>
+    </table>
+
+    <!-- Document Permissions Table -->
+    <h4 class="section-title">Document Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>View document</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Create document</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Modify document</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Delete document</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Create document folder</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Delete document folder</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Reports and Dashboards Permissions Table -->
+    <h4 class="section-title">Reports and Dashboards Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Manage Reports and Dashboards</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Schedule Reports</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage Compliance Reports and Metrics</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Import Permissions Table -->
+    <h4 class="section-title">Import Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Import My Job Openings</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import My Candidates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import My Organization Job Openings</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import My Organization Candidates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import My Departments</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import My Organization Departments</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import My Events</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Import History</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Data Migration</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Source Boosters</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Export Permissions Table -->
+    <h4 class="section-title">Export Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Export Job Openings</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Applications</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Candidates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Interviews</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Departments</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Campaigns</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Assessments</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Submissions</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Offers</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Events</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Tasks</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Calls</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Users</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Export Activity Log</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Candidate Management Permissions Table -->
+    <h4 class="section-title">Candidate Management Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Import Resume</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Resume Parser Mapping</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Setup Tags</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage Resume Inbox</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Convert as Employee</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Associate Candidate to Job Opening</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Unassociate</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Change candidate status</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Submit to Hiring Manager</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Add/Edit Reviews</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Career and Job Portal Permissions Table -->
+    <h4 class="section-title">Career and Job Portal Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Career Site</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Web-To-Candidates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Approve Web-to-Candidates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Publish and unpublish</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Post jobs in free job boards</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Post jobs in paid job boards</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Unsubscribe Link</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Invite Candidate</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Quick Apply</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Communication Permissions Table -->
+    <h4 class="section-title">Communication Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Reply to Messages</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage Messaging Templates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Send Email</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Send SMS</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Mass SMS Candidates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage Email Templates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage SMS Templates</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage customized from address</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Tool Permissions Table -->
+    <h4 class="section-title">Tool Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Mass Transfer Job Openings</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Mass Delete Job Openings</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Mass Update Job Openings</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Mass Transfer Applications</td><td><input type="checkbox" checked disabled></td></tr>
+        <!-- Add more rows for tool permissions -->
+      </tbody>
+    </table>
+
+    <!-- Admin Permissions Table -->
+    <h4 class="section-title">Admin Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Manage Users</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage Roles</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Manage Profiles</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Customize Zoho Recruit</td><td><input type="checkbox" checked disabled></td></tr>
+        <!-- Add more rows for admin permissions -->
+      </tbody>
+    </table>
+
+    <!-- Apps Permissions Table -->
+    <h4 class="section-title">Apps Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Zoho People Integration</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Zoho Sheet View</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Zoho Mail Integration</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Integration with Microsoft Outlook</td><td><input type="checkbox" checked disabled></td></tr>
+      </tbody>
+    </table>
+
+    <!-- General Permissions Table -->
+    <h4 class="section-title">General Permissions:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Permissions</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Manage Calendar Booking</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Change interview status</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Delete Emails</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Zoho CRM Integration</td><td><input type="checkbox" checked disabled></td></tr>
+        <tr><td>Find and Merge Departments</td><td><input type="checkbox" checked disabled></td></tr>
+        <!-- Add more rows for general permissions -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
