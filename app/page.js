@@ -71,9 +71,9 @@ const HomePage = () => {
 
       {/* Card Grid */}
       <div className="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
-        {renderCard('General', [
-          { text: 'Personal Settings' },
-          { text: 'Company Details' },
+        {renderCard('Design', [
+          { text: 'Create Candidates' , href: '/design-with-ss-and-html/candidates' },
+          { text: 'Dynamic Form for Adding Multiple Educational Details' , href: 'design-with-ss-and-html/dynamic-educational-form' },
           { text: 'Calendar Settings ✨', badge: true },
           { text: 'Email Settings' },
           { text: 'Notification Settings' },
