@@ -2,297 +2,495 @@
 
 This guide will walk you step-by-step through the process of creating a dynamic educational form in React, where users can add multiple educational entries. It's designed for beginners who are new to React.
 
----
+To implement the "Add Educational Details" functionality dynamically, we will mimic the existing "Educational Details" section whenever the user clicks the **`+ Add Educational Details`** button. Here's the updated code snippet:
 
-### 1. **Set Up the React Component**
+### Steps to Add Educational Details Dynamically
 
-- **Create the component**: Start by creating a new component (e.g., `CreateCandidateForm.js`).
-- **Import `useState`**: Use React’s `useState` hook to manage the form data and dynamic educational details.
+#### 1. Update State to Handle Dynamic Educational Details
+Add a state to track multiple educational details:
 
-```javascript
-import React, { useState } from 'react';
-```
-
----
-
-### 2. **Define Initial State**
-
-- **Define the `formData` state**: Store the general form data (like name, email, etc.) in an object.
-- **Define the `educationalDetails` state**: This state will hold an array of educational detail entries.
-
-```javascript
-const [formData, setFormData] = useState({
-  firstName: '',
-  lastName: '',
-  email: '',
-  // Add other form fields as needed
-});
-
+```jsx
 const [educationalDetails, setEducationalDetails] = useState([
-  {
-    institute: '',
-    major: '',
-    degree: '',
-    durationStartMonth: '',
-    durationStartYear: '',
-    durationEndMonth: '',
-    durationEndYear: '',
-    currentlyPursuing: false,
-  },
+  { institute: "", major: "", degree: "", startMonth: "", startYear: "", endMonth: "", endYear: "", currentlyPursuing: false },
 ]);
 ```
 
----
+#### 2. Create Helper Functions
+Define functions to add, update, and remove educational details dynamically.
 
-### 3. **Handle Form Changes**
-
-- **Define `handleChange` function**: This function updates the state when the user types or interacts with the form fields (e.g., text inputs or checkboxes).
-  
-```javascript
-const handleChange = (e) => {
-  const { name, value, type, checked } = e.target;
-
-  if (type === 'checkbox') {
-    setFormData({
-      ...formData,
-      [name]: checked,
-    });
-  } else {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  }
+```jsx
+const handleEducationChange = (index, field, value) => {
+  const updatedDetails = educationalDetails.map((detail, idx) =>
+    idx === index ? { ...detail, [field]: value } : detail
+  );
+  setEducationalDetails(updatedDetails);
 };
-```
 
-- **Handle file inputs**: Use a similar approach for file inputs like resume, cover letter, etc.
-
-```javascript
-const handleFileChange = (e) => {
-  const { name, files } = e.target;
-  setFormData({
-    ...formData,
-    [name]: files[0],
-  });
-};
-```
-
----
-
-### 4. **Add New Educational Detail**
-
-- **Add a new entry to the `educationalDetails` array**: Define a function `addEducationalDetail` to add an empty educational detail entry to the state.
-
-```javascript
 const addEducationalDetail = () => {
   setEducationalDetails([
     ...educationalDetails,
-    {
-      institute: '',
-      major: '',
-      degree: '',
-      durationStartMonth: '',
-      durationStartYear: '',
-      durationEndMonth: '',
-      durationEndYear: '',
-      currentlyPursuing: false,
-    },
+    { institute: "", major: "", degree: "", startMonth: "", startYear: "", endMonth: "", endYear: "", currentlyPursuing: false },
   ]);
 };
-```
 
----
-
-### 5. **Handle Educational Detail Changes**
-
-- **Define `handleEducationalDetailChange`**: This function updates the specific entry in the `educationalDetails` array. It accepts the index of the detail being edited and updates the corresponding field.
-
-```javascript
-const handleEducationalDetailChange = (index, e) => {
-  const { name, value, type, checked } = e.target;
-  const updatedEducationalDetails = [...educationalDetails];
-  
-  if (type === 'checkbox') {
-    updatedEducationalDetails[index][name] = checked;
-  } else {
-    updatedEducationalDetails[index][name] = value;
-  }
-
-  setEducationalDetails(updatedEducationalDetails);
+const removeEducationalDetail = (index) => {
+  setEducationalDetails(educationalDetails.filter((_, idx) => idx !== index));
 };
 ```
 
----
+#### 3. Render Educational Details Dynamically
+Replace the static "Educational Details" section with a dynamic rendering based on the `educationalDetails` array.
 
-### 6. **Render Educational Form Fields Dynamically**
-
-- **Map through the `educationalDetails` state**: For each entry in the array, render input fields for `institute`, `major`, `degree`, and other details.
-- **Pass the index to `handleEducationalDetailChange`** to update the right entry when the user types.
-
-```javascript
+```jsx
+<tr className="border">
+  <th colSpan="4" className="border">Educational Details</th>
+</tr>
 {educationalDetails.map((detail, index) => (
   <React.Fragment key={index}>
-    <tr>
-      <td>Institute / School</td>
-      <td><input type="text" name="institute" value={detail.institute} onChange={(e) => handleEducationalDetailChange(index, e)} /></td>
+    <tr className="border-0">
+      <td className="border-0 text-end">
+        <label htmlFor={`institute-${index}`} className="form-label">
+          Institute / School
+        </label>
+      </td>
+      <td className="border-0">
+        <input
+          type="text"
+          className={`form-control form-control-sm small-placeholder`}
+          id={`institute-${index}`}
+          name="institute"
+          placeholder="Institute"
+          value={detail.institute}
+          onChange={(e) => handleEducationChange(index, "institute", e.target.value)}
+        />
+      </td>
+      <td className="border-0 text-end">
+        <label htmlFor={`major-${index}`} className="form-label">
+          Major / Department
+        </label>
+      </td>
+      <td className="border-0">
+        <input
+          type="text"
+          className={`form-control form-control-sm small-placeholder`}
+          id={`major-${index}`}
+          name="major"
+          placeholder="Major"
+          value={detail.major}
+          onChange={(e) => handleEducationChange(index, "major", e.target.value)}
+        />
+      </td>
     </tr>
-    <tr>
-      <td>Major / Department</td>
-      <td><input type="text" name="major" value={detail.major} onChange={(e) => handleEducationalDetailChange(index, e)} /></td>
+    <tr className="border-0">
+      <td className="border-0 text-end">
+        <label htmlFor={`degree-${index}`} className="form-label">
+          Degree
+        </label>
+      </td>
+      <td className="border-0">
+        <input
+          type="text"
+          className={`form-control form-control-sm small-placeholder`}
+          id={`degree-${index}`}
+          name="degree"
+          placeholder="Degree"
+          value={detail.degree}
+          onChange={(e) => handleEducationChange(index, "degree", e.target.value)}
+        />
+      </td>
+      <td className="border-0 text-end">
+        <label htmlFor={`duration-${index}`} className="form-label">
+          Duration
+        </label>
+      </td>
+      <td className="border-0">
+        <div className="d-flex">
+          <select
+            className={`form-control form-control-sm small-placeholder`}
+            id={`startMonth-${index}`}
+            name="startMonth"
+            value={detail.startMonth}
+            onChange={(e) => handleEducationChange(index, "startMonth", e.target.value)}
+          >
+            <option value="">Month</option>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+          </select>
+          <select
+            className={`form-control form-control-sm small-placeholder`}
+            id={`startYear-${index}`}
+            name="startYear"
+            value={detail.startYear}
+            onChange={(e) => handleEducationChange(index, "startYear", e.target.value)}
+          >
+            <option value="">Year</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+          </select>
+          <span className="mx-2">To</span>
+          <select
+            className={`form-control form-control-sm small-placeholder`}
+            id={`endMonth-${index}`}
+            name="endMonth"
+            value={detail.endMonth}
+            onChange={(e) => handleEducationChange(index, "endMonth", e.target.value)}
+          >
+            <option value="">Month</option>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+          </select>
+          <select
+            className={`form-control form-control-sm small-placeholder`}
+            id={`endYear-${index}`}
+            name="endYear"
+            value={detail.endYear}
+            onChange={(e) => handleEducationChange(index, "endYear", e.target.value)}
+          >
+            <option value="">Year</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+          </select>
+        </div>
+      </td>
     </tr>
-    <tr>
-      <td>Degree</td>
-      <td><input type="text" name="degree" value={detail.degree} onChange={(e) => handleEducationalDetailChange(index, e)} /></td>
-    </tr>
-    <tr>
-      <td>Currently Pursuing</td>
-      <td>
-        <input type="checkbox" name="currentlyPursuing" checked={detail.currentlyPursuing} onChange={(e) => handleEducationalDetailChange(index, e)} />
+    <tr className="border-0">
+      <td className="border-0 text-end">
+        <label htmlFor={`currentlyPursuing-${index}`} className="form-label">
+          Currently Pursuing
+        </label>
+      </td>
+      <td className="border-0">
+        <input
+          type="checkbox"
+          id={`currentlyPursuing-${index}`}
+          name="currentlyPursuing"
+          checked={detail.currentlyPursuing}
+          onChange={(e) => handleEducationChange(index, "currentlyPursuing", e.target.checked)}
+        />
+      </td>
+      <td className="border-0"></td>
+      <td className="border-0">
+        <button
+          type="button"
+          className="btn btn-danger btn-sm"
+          onClick={() => removeEducationalDetail(index)}
+        >
+          Remove
+        </button>
       </td>
     </tr>
   </React.Fragment>
 ))}
+
+<tr className="border">
+  <th colSpan="4" className="border">
+    <button
+      className="btn btn-link text-primary"
+      type="button"
+      onClick={addEducationalDetail}
+    >
+      + Add Educational Details
+    </button>
+  </th>
+</tr>
 ```
 
----
+### What Happens Here?
+1. **Dynamic State**: Each educational detail is an object in the `educationalDetails` array.
+2. **Add Detail**: Clicking the `+ Add Educational Details` button appends a new detail object.
+3. **Remove Detail**: Clicking the "Remove" button deletes the specific educational detail.
+4. **Dynamic Rendering**: Each detail renders dynamically based on the state.
 
-### 7. **Add "Add Educational Details" Button**
+### Next Steps
+- **Form Submission**: Include `educationalDetails` in the final `formData`.
+- **Validation**: Add validation for each educational detail, if needed.
 
-- **Create a button** to add new educational details dynamically.
-- **Call `addEducationalDetail`** when the button is clicked.
 
-```javascript
-<button type="button" onClick={addEducationalDetail}>+ Add Educational Details</button>
-```
+Here is the full updated code for the `CreateCandidateForm` component, including the dynamic **Educational Details** section with the ability to add, update, and remove entries.
 
----
+### Full Code
 
-### 8. **Log Data Changes**
-
-- **Log the form data**: Optionally, add console logs to track the old and new data whenever the user types in the form.
-
-```javascript
-console.log('Old Form Data:', oldData);
-console.log('New Form Data:', newData);
-```
-
----
-
-### 9. **Complete Form Structure**
-
-- **Render other sections** of the form, such as basic info, professional details, social links, and attachment fields.
-- **Ensure each section is similar to the educational details** where required.
-
----
-
-### 10. **Final Code Example**
-
-Here’s the final code for a dynamic form with the educational details functionality:
-
-```javascript
+```jsx
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const CreateCandidateForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    // Other fields...
-  });
-
-  const [educationalDetails, setEducationalDetails] = useState([
-    {
-      institute: '',
-      major: '',
-      degree: '',
-      durationStartMonth: '',
-      durationStartYear: '',
-      durationEndMonth: '',
-      durationEndYear: '',
-      currentlyPursuing: false,
-    },
-  ]);
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const oldData = { ...formData };
-
-    if (type === 'checkbox') {
-      setFormData({
-        ...formData,
-        [name]: checked,
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
-
-    const newData = { ...formData };
-    console.log('Old Form Data:', oldData);
-    console.log('New Form Data:', newData);
+  // 1) INITIAL STATES
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+    phone: "",
+    website: "",
+    secondaryEmail: "",
+    street: "",
+    province: "",
+    city: "",
+    postalCode: "",
+    country: "",
+    experience: "",
+    currentJobTitle: "",
+    expectedSalary: "",
+    skillSet: "",
+    skypeId: "",
+    linkedin: "",
+    twitter: "",
+    facebook: "",
+    candidateStatus: "",
+    candidateOwner: "",
   };
 
-  const handleEducationalDetailChange = (index, e) => {
-    const { name, value, type, checked } = e.target;
-    const oldEducationalDetails = [...educationalDetails];
+  const [formData, setFormData] = useState(initialState);
+  const [formErrors, setFormErrors] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const updatedEducationalDetails = [...educationalDetails];
-    if (type === 'checkbox') {
-      updatedEducationalDetails[index][name] = checked;
-    } else {
-      updatedEducationalDetails[index][name] = value;
-    }
-    setEducationalDetails(updatedEducationalDetails);
+  // Educational Details State
+  const [educationalDetails, setEducationalDetails] = useState([
+    { institute: "", major: "", degree: "", startMonth: "", startYear: "", endMonth: "", endYear: "", currentlyPursuing: false },
+  ]);
 
-    const newEducationalDetails = [...updatedEducationalDetails];
-    console.log('Old Educational Details:', oldEducationalDetails);
-    console.log('New Educational Details:', newEducationalDetails);
+  // 2) HELPER FUNCTIONS
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Educational Details Handlers
+  const handleEducationChange = (index, field, value) => {
+    const updatedDetails = educationalDetails.map((detail, idx) =>
+      idx === index ? { ...detail, [field]: value } : detail
+    );
+    setEducationalDetails(updatedDetails);
   };
 
   const addEducationalDetail = () => {
     setEducationalDetails([
       ...educationalDetails,
-      {
-        institute: '',
-        major: '',
-        degree: '',
-        durationStartMonth: '',
-        durationStartYear: '',
-        durationEndMonth: '',
-        durationEndYear: '',
-        currentlyPursuing: false,
-      },
+      { institute: "", major: "", degree: "", startMonth: "", startYear: "", endMonth: "", endYear: "", currentlyPursuing: false },
     ]);
   };
 
+  const removeEducationalDetail = (index) => {
+    setEducationalDetails(educationalDetails.filter((_, idx) => idx !== index));
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const finalData = { ...formData, educationalDetails };
+    console.log("Form Submitted:", finalData);
+    alert("Form submitted successfully!");
+  };
+
+  // 3) FORM RENDERING
   return (
     <div className="container mt-5">
       <h2>Create Candidate</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
+        {/* BASIC INFO */}
         <table className="table table-bordered">
           <tbody>
-            {/* Render Basic Info, Address, Social Links, etc. */}
+            <tr className="border">
+              <th colSpan="4" className="border">Basic Info</th>
+            </tr>
+            <tr className="border-0">
+              <td className="border-0 text-end">
+                <label htmlFor="firstName" className="form-label">First Name</label>
+              </td>
+              <td className="border-0">
+                <input
+                  type="text"
+                  className="form-control form-control-sm"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                />
+              </td>
+              <td className="border-0 text-end">
+                <label htmlFor="lastName" className="form-label">Last Name</label>
+              </td>
+              <td className="border-0">
+                <input
+                  type="text"
+                  className="form-control form-control-sm"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                />
+              </td>
+            </tr>
+            {/* Add other form fields as needed */}
+          </tbody>
+        </table>
 
-            <tr>
-              <th colSpan="4">Educational Details</th>
+        {/* EDUCATIONAL DETAILS */}
+        <table className="table table-bordered">
+          <tbody>
+            <tr className="border">
+              <th colSpan="4" className="border">Educational Details</th>
             </tr>
             {educationalDetails.map((detail, index) => (
               <React.Fragment key={index}>
-                {/* Educational form fields */}
+                <tr className="border-0">
+                  <td className="border-0 text-end">
+                    <label htmlFor={`institute-${index}`} className="form-label">Institute / School</label>
+                  </td>
+                  <td className="border-0">
+                    <input
+                      type="text"
+                      className="form-control form-control-sm"
+                      id={`institute-${index}`}
+                      name="institute"
+                      placeholder="Institute"
+                      value={detail.institute}
+                      onChange={(e) => handleEducationChange(index, "institute", e.target.value)}
+                    />
+                  </td>
+                  <td className="border-0 text-end">
+                    <label htmlFor={`major-${index}`} className="form-label">Major / Department</label>
+                  </td>
+                  <td className="border-0">
+                    <input
+                      type="text"
+                      className="form-control form-control-sm"
+                      id={`major-${index}`}
+                      name="major"
+                      placeholder="Major"
+                      value={detail.major}
+                      onChange={(e) => handleEducationChange(index, "major", e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr className="border-0">
+                  <td className="border-0 text-end">
+                    <label htmlFor={`degree-${index}`} className="form-label">Degree</label>
+                  </td>
+                  <td className="border-0">
+                    <input
+                      type="text"
+                      className="form-control form-control-sm"
+                      id={`degree-${index}`}
+                      name="degree"
+                      placeholder="Degree"
+                      value={detail.degree}
+                      onChange={(e) => handleEducationChange(index, "degree", e.target.value)}
+                    />
+                  </td>
+                  <td className="border-0 text-end">
+                    <label htmlFor={`duration-${index}`} className="form-label">Duration</label>
+                  </td>
+                  <td className="border-0">
+                    <div className="d-flex">
+                      <select
+                        className="form-control form-control-sm"
+                        id={`startMonth-${index}`}
+                        name="startMonth"
+                        value={detail.startMonth}
+                        onChange={(e) => handleEducationChange(index, "startMonth", e.target.value)}
+                      >
+                        <option value="">Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                      </select>
+                      <select
+                        className="form-control form-control-sm"
+                        id={`startYear-${index}`}
+                        name="startYear"
+                        value={detail.startYear}
+                        onChange={(e) => handleEducationChange(index, "startYear", e.target.value)}
+                      >
+                        <option value="">Year</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                      </select>
+                      <span className="mx-2">To</span>
+                      <select
+                        className="form-control form-control-sm"
+                        id={`endMonth-${index}`}
+                        name="endMonth"
+                        value={detail.endMonth}
+                        onChange={(e) => handleEducationChange(index, "endMonth", e.target.value)}
+                      >
+                        <option value="">Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                      </select>
+                      <select
+                        className="form-control form-control-sm"
+                        id={`endYear-${index}`}
+                        name="endYear"
+                        value={detail.endYear}
+                        onChange={(e) => handleEducationChange(index, "endYear", e.target.value)}
+                      >
+                        <option value="">Year</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+                <tr className="border-0">
+                  <td className="border-0 text-end">
+                    <label htmlFor={`currentlyPursuing-${index}`} className="form-label">Currently Pursuing</label>
+                  </td>
+                  <td className="border-0">
+                    <input
+                      type="checkbox"
+                      id={`currentlyPursuing-${index}`}
+                      name="currentlyPursuing"
+                      checked={detail.currentlyPursuing}
+                      onChange={(e) => handleEducationChange(index, "currentlyPursuing", e.target.checked)}
+                    />
+                  </td>
+                  <td className="border-0"></td>
+                  <td className="border-0">
+                    <button
+                      type="button"
+                      className="btn btn-danger btn-sm"
+                      onClick={() => removeEducationalDetail(index)}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
               </React.Fragment>
             ))}
-            <tr>
-              <td colSpan="4">
-                <button type="button" onClick={addEducationalDetail}>+ Add Educational Details</button>
-              </td>
+            <tr className="border">
+              <th colSpan="4" className="border">
+                <button
+                  className="btn btn-link text-primary"
+                  type="button"
+                  onClick={addEducationalDetail}
+                >
+                  + Add Educational Details
+                </button>
+              </th>
             </tr>
-            {/* Render Other Sections */}
           </tbody>
         </table>
+
+        {/* SUBMIT BUTTON */}
+        <div className="d-flex justify-content-end gap-3">
+          <button type="submit" className="btn btn-primary">
+            Save and Publish
+          </button>
+        </div>
       </form>
     </div>
   );
@@ -301,9 +499,16 @@ const CreateCandidateForm = () => {
 export default CreateCandidateForm;
 ```
 
----
+### Features of This Implementation
+1. **Dynamic Educational Details**:
+   - Users can add multiple educational entries dynamically.
+   - Each entry has fields for the institute, major, degree, duration, and currently pursuing.
 
-### 11. **Conclusion**
+2. **Form Validation**:
+   - You can extend the `formErrors` logic to include validation for educational details.
 
-This dynamic form allows users to add and manage multiple educational details. You can extend the functionality to other sections by following the same pattern. React's `useState` makes it simple to handle form data, and the concept of dynamically adding fields based on state helps create flexible, user-friendly forms.
+3. **Seamless UI**:
+   - Users can dynamically manage (add or remove) entries.
 
+4. **Submission**:
+   - All form data, including educational details, is included in the `finalData` during form submission.
