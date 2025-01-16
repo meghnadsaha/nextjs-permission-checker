@@ -89,11 +89,8 @@ const HomePage = () => {
         ])}
 
         {renderCard('Customization', [
-          { text: 'Modules', href: '#modules' },
-          { text: 'Templates', href: '#templates' },
-          { text: 'Hiring Pipeline', href: '#hiringPipeline' },
-          { text: 'Copy Customization', href: '#copyCustomization' },
-          { text: 'Customize Home page', href: '#customizeHome' },
+                  { text: 'Toggleable Sidebar', href: '/ui-components/responsive-grid-toggle' },          
+
         ])}
 
         {renderCard('Resume Management', [

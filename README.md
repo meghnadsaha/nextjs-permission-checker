@@ -21,5 +21,5 @@ Ready to supercharge your front-end development? Explore these hands-on guides t
    Learn how to create a dynamic form where users can add multiple educational entries, with real-time validation and dynamic field rendering using React and Bootstrap 5.3.
 
 
-7. [Responsive Grid with Toggleable Sidebar in React](https://github.com/your-repo/responsive-grid-toggle/blob/main/ResponsiveGridToggle.js)
+7. [Responsive Grid with Toggleable Sidebar in React](https://github.com/meghnadsaha/nextjs-permission-checker/blob/main/app/ui-components/responsive-grid-toggle/responsive-grid-toggle.md)
    Learn how to build a responsive grid layout with a toggleable sidebar using React and Bootstrap 5.3. The sidebar can be shown or hidden dynamically, while the main content area remains visible and adjusts seamlessly.
